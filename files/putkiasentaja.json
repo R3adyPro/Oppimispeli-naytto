@@ -1,0 +1,15 @@
+{"putkiasentaja":[
+    {"roska":"Puu", "minne":"Puujäte"},
+    {"roska":"Betonimurska", "minne":"Kiviainesjäte"},
+    {"roska":"Jauhemmainen kuivabetoni", "minne":"Vaarallinen jäte"},
+    {"roska":"Kivivilla", "minne":"Sekajäte"},
+    {"roska":"Lasivilla", "minne":"Sekajäte"},
+    {"roska":"Teräs", "minne":"Metalli"},
+    {"roska":"Ikkuna", "minne":"Lasi"},
+    {"roska":"Naulat, mutterit ja ruuvit", "minne":"Metalli"},
+    {"roska":"Laminaatti", "minne":"Puujäte"},
+    {"roska":"Muovimatto", "minne":"Sekajäte"},
+    {"roska":"Tiilet", "minne":"Kiviainesjäte"},
+    {"roska":"Laatat", "minne":"Kiviainesjäte"},
+    {"roska":"Kipsilevy", "minne":"Sekajäte"}
+]}

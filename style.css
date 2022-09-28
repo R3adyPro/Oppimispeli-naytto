@@ -1,1 +1,10 @@
-
+.draggable {
+    width: 5%;
+    min-height: 1.5em;
+    margin: 1rem 0 0 1rem;
+    background-color: red;
+    border-radius: 0.75em;
+    padding: 4%;
+    touch-action: none;
+    user-select: none;
+}
