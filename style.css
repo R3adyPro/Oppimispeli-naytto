@@ -1,1 +1,32 @@
+html,body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
 
+.boxi{
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    width: 50%;
+    height: 90%;
+    border-style: solid;
+    border-radius: 16px;
+    border-width: 5px;
+    border-color: #4489d8;
+    background-color: #abc1da;
+}
+
+.yla{
+    height: 66%;
+}
+
+.roskaboxi{
+    text-align: center;
+    height: 34%;
+    
+}
+
+.kor{
+    height: 100%;
+}
