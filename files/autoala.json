@@ -1,3 +1,15 @@
 {"autoala":[
-    {}
+    {"roska":"Akut", "minne":"Vaarallinen jäte"},
+    {"roska":"Jarrulevy", "minne":"Metalli"},
+    {"roska":"Moottoriöljy", "minne":"Vaarallinen jäte"},
+    {"roska":"Ilmansuodatin", "minne":"Sekajäte"},
+    {"roska":"Tuulilasi", "minne":"lasi"},
+    {"roska":"Jarrupala", "minne":"Metalli"},
+    {"roska":"Öljynsuodatin", "minne":"Vaarallinen jäte"},
+    {"roska":"Sytytystulppa", "minne":"Metalli"},
+    {"roska":"Kaiutin", "minne":"SER"},
+    {"roska":"Hehku- tai halogeenipolttimo", "minne":"Sekajäte"},
+    {"roska":"LED- tai xenon polttimot", "minne":"SER"},
+    {"roska":"Iskunvaimennin sis öljyä", "minne":"Vaarallinen jäte"},
+    {"roska":"Iskunvaimennin öljy poistettu", "minne":"Metalli"}
 ]}
