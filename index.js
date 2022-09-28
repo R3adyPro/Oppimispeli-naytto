@@ -3,7 +3,6 @@ import data from './files/yleiset.json' assert {type: 'json'}
 
 const position = { x: 0, y: 0 }
 
-
 interact('.draggable').draggable({
   listeners: {
     start (event) {
