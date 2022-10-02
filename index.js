@@ -1,19 +1,41 @@
 import data from './files/yleiset.json' assert {type: 'json'}
 import interact from 'https://cdn.skypack.dev/interactjs';
 
-const position = { x: 0, y: 0 }
 
 interact('.draggable').draggable({
   listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
+    move: dragMoveListener,
+    end: endEvent 
+
   }
 })
+
+function dragMoveListener (event) {
+  var target = event.target
+
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+  
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+function endEvent (event){
+
+}
+
+interact(".dropzone")
+  .dropzone({
+    ondrop: function (event) {
+      event.target.classList.add('drop-active')
+  }
+})
+
+interact('.drag-drop').draggable({
+  listeners: {move: dragMoveListener}
+})
+
+window.dragMoveListener = dragMoveListener
