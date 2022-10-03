@@ -27,14 +27,22 @@ function endEvent (event){
 
 }
 
-interact(".dropzone")
-  .dropzone({
-    ondrop: function (event) {
-      event.target.classList.add('drop-active')
-  }
+interact(".dropzone").dropzone({
+  ondropactivate: function (event) {
+    event.target.classList.add('drop-active')
+  },
+  ondropdeactivate: function (event){
+    event.target.classList.remove('drop-active')
+  },
 })
 
-interact('.drag-drop').draggable({
+interact('.draggable').draggable({
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: 'parent',
+      endOnly: true
+    })
+  ],
   listeners: {move: dragMoveListener}
 })
 

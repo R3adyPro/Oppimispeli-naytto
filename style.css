@@ -55,18 +55,18 @@ h5{
 }
 
 .dropzone {
-    background-color: purple;
-    border: dashed 4px transparent;
+    background-color: #ad9c6b;
+    border: dashed 2px transparent;
     border-radius: 4px;
     margin: 10px auto 30px;
     padding: 10px;
+    min-width: 1rem;
     width: 80%;
-    height: 120px;
-    transition: background-color 0.3s;
+    height: 80%;
 }
 
 .drop-active {
-    border-color: #aaa;
+    border-color: #ffffff;
   }
 
 #drag-1, #drag-2, #drag-3 {
