@@ -69,13 +69,14 @@ h5{
     border-color: #ffffff;
   }
 
-#drag-1, #drag-2, #drag-3 {
-    width: 5%;
-    min-height: 0.5em;
+.draggable {
+    position: relative;
+    width: 10%;
+    min-height: 1.5em;
     margin: 1rem 0 0 1rem;
+    padding: 5px;
     background-color: red;
     border-radius: 0.75em;
-    overflow: hidden;
     touch-action: none;
     user-select: none; 
     transform: translate(450px, -1200px);
