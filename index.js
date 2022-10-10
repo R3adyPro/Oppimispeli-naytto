@@ -52,33 +52,68 @@ interact('.draggable').draggable({
 
 window.dragMoveListener = dragMoveListener
 
-function addElement(numero){
+
+
+
+
+
+function laatikoidenLuonti(numero){
   const uusiDiv = document.createElement("div");
   uusiDiv.setAttribute("id", "drag-" + numero,)
   uusiDiv.setAttribute("class", "draggable")
-  uusiDiv.setAttribute("data-x", "450");
-  uusiDiv.setAttribute("data-y", "-1200")
+
+  if(numero<12){
+    uusiDiv.setAttribute("style", "transform: translate(450px, -1200px)");
+    uusiDiv.setAttribute("data-x", "450");
+    uusiDiv.setAttribute("data-y", "-1200")
+  }else if(numero>11){
+    uusiDiv.setAttribute("style", "transform: translate(600px, -1835px)");
+    uusiDiv.setAttribute("data-x", "600");
+    uusiDiv.setAttribute("data-y", "-1835")
+  }
+
   const content = document.createTextNode(roskaLista[i])
   uusiDiv.appendChild(content)
-  const nykyinen = document.getElementById(testi)
+  const nykyinen = document.getElementById(laatikot)
 
   document.body.insertBefore(uusiDiv, nykyinen)
+}
+
+function roskistenLuonti(numero){
+  const insert = document.getElementById("roskaboxi")
+  const uusiDiv = document.createElement("div");
+  uusiDiv.setAttribute("class", "roskis")
+  
+  const uusiP = document.createElement("div");
+  uusiP.setAttribute("id", "roskis" + numero)
+  uusiDiv.appendChild(uusiP)
+
+  const uusiDropzone = document.createElement("div")  
+  uusiDropzone.setAttribute("class", "dropzone")
+  uusiDropzone.setAttribute("id", "dropzone" + numero)
+  uusiDiv.appendChild(uusiDropzone)
+
+  insert.insertAdjacentElement("afterbegin", uusiDiv)
 }
 
 //Roskisten nimien vaihto
 
 for(var i=0; i<Object.keys(data.Roskat).length; i++){
   roskaLista.push(data.Roskat[i].roska)
-  addElement(i)
+  laatikoidenLuonti(i)
+
   if(!roskaAstiaLista.includes(data.Roskat[i].minne)){
     roskaAstiaLista.push(data.Roskat[i].minne)
   }
 }
 for(var i=0; i<roskaAstiaLista.length; i++){
   try {
+    roskistenLuonti(i +1)
     document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    
   }
   catch (error) {
+    
     continue
   }
 }
