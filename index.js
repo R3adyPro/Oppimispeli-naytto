@@ -3,7 +3,7 @@ import interact from 'https://cdn.skypack.dev/interactjs';
 
 const roskaLista = []
 const roskaAstiaLista = []
-const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11"]
+const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11", "roskis12", "roskis13", "roskis14"]
 
 
 interact('.draggable').draggable({
