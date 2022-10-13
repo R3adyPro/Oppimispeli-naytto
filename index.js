@@ -145,7 +145,7 @@ function roskistenNimienVaihto(){
         document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
     }
   }
-
+  
   else if(peliIndex == 2){
     for(var i=0; i<Object.keys(data.maalari).length; i++){
       roskaLista.push(data.maalari[i].roska)
