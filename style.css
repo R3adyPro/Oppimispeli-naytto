@@ -31,8 +31,8 @@ html,body{
 }
 
 .roskis{   
+    display: inline-block;
     text-align: center;
-    float: left;
     min-width: 11vw;
     height: 25vw;
     object-fit: fill;
@@ -51,6 +51,31 @@ html,body{
 h5{
     text-align: center;
 }
+
+h1{
+    font-size: 34px;
+    font-family: monospace;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modalSisalto {
+    background-color: #4489d8;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid black;
+    width: 30%;
+    text-align: center;
+}
+
 
 .dropzone {
     background-color: #ad9c6b;
@@ -76,6 +101,7 @@ h5{
     background-color: red;
     border-radius: 0.75em;
     touch-action: none;
+    overflow: hidden;
     user-select: none; 
     transform: translate(450px, -1200px);
 }

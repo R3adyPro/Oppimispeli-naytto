@@ -8,13 +8,28 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="peliModal" class="modal">
+        <div class="modalSisalto">
+            <h1>Valitse pelimuoto</h1>
+            <select name="muodot" id="peliMuodot">
+                <option value="Roskat">Yleinen</option>
+                <option value="autoala">Autoala</option>
+                <option value="maalari">Maalari</option>
+                <option value="putkiasentaja">Putkiasentaja</option>
+                <option value="sahkoasentaja">Sähköasentaja</option>
+            </select>
+            <br><br>
+            <button id="pelaa" onclick="peliMuodonValinta()">Pelaa</button>
+            <br><br>
+        </div>
+    </div>
     <div class="kor">
         <header>
             <br>
         </header>        
         <div class="yla">
             <div class="boxi">
-                <h1>dwadwadwadwa</h1>
+                <h1>Roskat</h1>
             </div>
             <div class="pisteet">
                 <h1>Pisteet:</h1>

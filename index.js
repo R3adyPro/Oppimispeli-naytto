@@ -1,17 +1,27 @@
-import data from './files/yleiset.json' assert {type: 'json'}
+import data from './roskat.json' assert {type: 'json'}
 import interact from 'https://cdn.skypack.dev/interactjs';
 
+var peliIndex 
 const roskaLista = []
 const roskaAstiaLista = []
 const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11", "roskis12", "roskis13", "roskis14"]
+
+
+
+pelaa.onclick = function peliMuodonValinta() {
+  peliIndex = document.getElementById("peliMuodot").selectedIndex;
+  modal.style.display = "none"
+  roskistenNimienVaihto()
+}
 
 
 interact('.draggable').draggable({
   listeners: {
 
     move: dragMoveListener,
-    end: endEvent 
+    end: endEvent, 
 
+    autoScroll: true
   }
 })
 
@@ -50,9 +60,6 @@ interact('.draggable').draggable({
   listeners: {move: dragMoveListener}
 })
 
-window.dragMoveListener = dragMoveListener
-
-
 
 
 
@@ -72,7 +79,7 @@ function laatikoidenLuonti(numero){
     uusiDiv.setAttribute("data-y", "-1835")
   }
 
-  const content = document.createTextNode(roskaLista[i])
+  const content = document.createTextNode(roskaLista[numero])
   uusiDiv.appendChild(content)
   const nykyinen = document.getElementById(laatikot)
 
@@ -96,25 +103,94 @@ function roskistenLuonti(numero){
   insert.insertAdjacentElement("afterbegin", uusiDiv)
 }
 
+//modal
+
+var modal = document.getElementById("peliModal");
+
+var span = document.getElementsByClassName("close")[0];
+
+
+
+
 //Roskisten nimien vaihto
+function roskistenNimienVaihto(){
+  if(peliIndex == 0){
+    for(var i=0; i<Object.keys(data.yleiset).length; i++){
+      roskaLista.push(data.yleiset[i].roska)
+      laatikoidenLuonti(i)
 
-for(var i=0; i<Object.keys(data.Roskat).length; i++){
-  roskaLista.push(data.Roskat[i].roska)
-  laatikoidenLuonti(i)
+    
+      if(!roskaAstiaLista.includes(data.yleiset[i].minne)){
+        roskaAstiaLista.push(data.yleiset[i].minne)
+      }
+    }
+    for(var i=0; i<roskaAstiaLista.length; i++){
+        roskistenLuonti(i +1)
+        document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    }
+  }
 
-  if(!roskaAstiaLista.includes(data.Roskat[i].minne)){
-    roskaAstiaLista.push(data.Roskat[i].minne)
+  else if(peliIndex == 1){
+    for(var i=0; i<Object.keys(data.autoala).length; i++){
+      roskaLista.push(data.autoala[i].roska)
+      laatikoidenLuonti(i)
+
+    
+      if(!roskaAstiaLista.includes(data.autoala[i].minne)){
+        roskaAstiaLista.push(data.autoala[i].minne)
+      }
+    }
+    for(var i=0; i<roskaAstiaLista.length; i++){
+        roskistenLuonti(i +1)
+        document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    }
+  }
+
+  else if(peliIndex == 2){
+    for(var i=0; i<Object.keys(data.maalari).length; i++){
+      roskaLista.push(data.maalari[i].roska)
+      laatikoidenLuonti(i)
+
+    
+      if(!roskaAstiaLista.includes(data.maalari[i].minne)){
+        roskaAstiaLista.push(data.maalari[i].minne)
+      }
+    }
+    for(var i=0; i<roskaAstiaLista.length; i++){
+        roskistenLuonti(i +1)
+        document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    }
+  }
+
+  else if(peliIndex == 3){
+    for(var i=0; i<Object.keys(data.putkiasentaja).length; i++){
+      roskaLista.push(data.putkiasentaja[i].roska)
+      laatikoidenLuonti(i)
+
+    
+      if(!roskaAstiaLista.includes(data.putkiasentaja[i].minne)){
+        roskaAstiaLista.push(data.putkiasentaja[i].minne)
+      }
+    }
+    for(var i=0; i<roskaAstiaLista.length; i++){
+        roskistenLuonti(i +1)
+        document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    }
+  } 
+
+  else if(peliIndex == 4){
+    for(var i=0; i<Object.keys(data.sahkoasentaja).length; i++){
+      roskaLista.push(data.sahkoasentaja[i].roska)
+      laatikoidenLuonti(i)
+
+    
+      if(!roskaAstiaLista.includes(data.sahkoasentaja[i].minne)){
+        roskaAstiaLista.push(data.sahkoasentaja[i].minne)
+      }
+    }
+    for(var i=0; i<roskaAstiaLista.length; i++){
+        roskistenLuonti(i +1)
+        document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
+    }
   }
 }
-for(var i=0; i<roskaAstiaLista.length; i++){
-  try {
-    roskistenLuonti(i +1)
-    document.getElementById(roskislista[i]).innerHTML = roskaAstiaLista[i];
-    
-  }
-  catch (error) {
-    
-    continue
-  }
-}
-
