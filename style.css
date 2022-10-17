@@ -33,8 +33,9 @@ html,body{
 .roskis{   
     display: inline-block;
     text-align: center;
-    min-width: 11vw;
-    height: 25vw;
+    min-width: 2vmin;
+    width: 11vmax;
+    height: 26vw;
     object-fit: fill;
     background-color: #e9d190;
 }
@@ -83,7 +84,7 @@ h1{
     border-radius: 4px;
     margin: 10px auto 30px;
     padding: 10px;
-    min-width: 5vw;
+    min-width: 2vmin;
     width: 9vmax;
     height: 21vmax;
 }
@@ -93,9 +94,9 @@ h1{
   }
 
 .draggable {
-    position: relative;
-    width: 6%;
-    min-height: 1.5em;
+    width: 8.5%;
+    min-height: 2.5em;
+    text-align: center;
     margin: 1rem 0 0 1rem;
     padding: 5px;
     background-color: red;
@@ -103,5 +104,5 @@ h1{
     touch-action: none;
     overflow: hidden;
     user-select: none; 
-    transform: translate(450px, -1200px);
+    transform: translate(0px, 0px);
 }

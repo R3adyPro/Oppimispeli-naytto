@@ -2,7 +2,9 @@ import data from './roskat.json' assert {type: 'json'}
 import interact from 'https://cdn.skypack.dev/interactjs';
 
 var peliIndex 
-const roskaLista = []
+var pois
+var pisteet = 0
+const roskaLista  = []
 const roskaAstiaLista = []
 const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11", "roskis12", "roskis13", "roskis14"]
 
@@ -15,15 +17,6 @@ pelaa.onclick = function peliMuodonValinta() {
 }
 
 
-interact('.draggable').draggable({
-  listeners: {
-
-    move: dragMoveListener,
-    end: endEvent, 
-
-    autoScroll: true
-  }
-})
 
 function dragMoveListener (event) {
   var target = event.target
@@ -37,9 +30,46 @@ function dragMoveListener (event) {
   target.setAttribute('data-y', y)
 }
 
-function endEvent (event){
-  
-}
+
+interact(".dropzone").dropzone({
+  checker: function (
+    dragEvent,
+    event,            
+    dropped,           
+    dropzone,          
+    dropzoneElement,   
+    draggable,         
+    draggableElement
+  ) {
+    var drag = draggableElement.getAttribute("id");
+    var drop = dropzoneElement.getAttribute("id")
+    for(var i=0; i<roskaLista.length; i++){
+      if(peliIndex == 0){
+        if(drag == data.yleiset[i].minne + i && drop == data.yleiset[i].minne && dropped == true){
+          pois = data.yleiset[i].minne + i
+
+        }
+      }else if(peliIndex == 1){
+        if(drag == data.autoala[i].minne + i && drop == data.autoala[i].minne && dropped == true){
+          pois = data.autoala[i].minne + i
+        }
+      }else if(peliIndex == 2){
+        if(drag == data.maalari[i].minne + i && drop == data.maalari[i].minne && dropped == true){
+          pois = data.maalari[i].minne + i
+        }
+      }else if(peliIndex == 3){
+        if(drag == data.rakennusala[i].minne + i && drop == data.rakennusala[i].minne && dropped == true){
+          pois = data.rakennusala[i].minne + i
+        }
+      }else if(peliIndex == 4){
+        if(drag == data.artesaani[i].minne + i && drop == data.artesaani[i].minne && dropped == true){
+          pois = data.artesaani[i].minne + i
+        }
+      }
+    }
+
+  }
+});
 
 interact(".dropzone").dropzone({
   ondropactivate: function (event) {
@@ -57,26 +87,54 @@ interact('.draggable').draggable({
       endOnly: true
     })
   ],
-  listeners: {move: dragMoveListener}
-})
+  listeners: {
+    move: dragMoveListener,
 
+    end (event){
+      try{
+      var element = document.getElementById(pois)
+      element.remove()
+      pisteet = pisteet + 1
+      document.getElementById("pisteet").innerHTML = pisteet
+      }catch{
+        console.log()
+      }
+    }
+  }
+})
 
 
 
 
 function laatikoidenLuonti(numero){
   const uusiDiv = document.createElement("div");
-  uusiDiv.setAttribute("id", "drag-" + numero,)
+  if(peliIndex == 0){
+    uusiDiv.setAttribute("id", data.yleiset[numero].minne + numero)
+  }else if(peliIndex == 1){
+    uusiDiv.setAttribute("id", data.autoala[numero].minne + numero)
+  }else if(peliIndex == 2){
+    uusiDiv.setAttribute("id", data.maalari[numero].minne + numero)
+  }else if(peliIndex == 3){
+    uusiDiv.setAttribute("id", data.rakennusala[numero].minne + numero)
+  }else if(peliIndex == 4){
+    uusiDiv.setAttribute("id", data.artesaani[numero].minne + numero)
+  }
+
+  
   uusiDiv.setAttribute("class", "draggable")
 
-  if(numero<12){
+  if(numero<9){
     uusiDiv.setAttribute("style", "transform: translate(450px, -1200px)");
     uusiDiv.setAttribute("data-x", "450");
     uusiDiv.setAttribute("data-y", "-1200")
-  }else if(numero>11){
-    uusiDiv.setAttribute("style", "transform: translate(600px, -1835px)");
-    uusiDiv.setAttribute("data-x", "600");
+  }else if(numero>9 && numero<20){
+    uusiDiv.setAttribute("style", "transform: translate(620px, -1860px)");
+    uusiDiv.setAttribute("data-x", "620");
     uusiDiv.setAttribute("data-y", "-1835")
+  }else if(numero>19){
+    uusiDiv.setAttribute("style", "transform: translate(790px, -2520px)");
+    uusiDiv.setAttribute("data-x", "790");
+    uusiDiv.setAttribute("data-y", "-2520")
   }
 
   const content = document.createTextNode(roskaLista[numero])
@@ -97,7 +155,7 @@ function roskistenLuonti(numero){
 
   const uusiDropzone = document.createElement("div")  
   uusiDropzone.setAttribute("class", "dropzone")
-  uusiDropzone.setAttribute("id", "dropzone" + numero)
+  uusiDropzone.setAttribute("id", roskaAstiaLista[numero-1])
   uusiDiv.appendChild(uusiDropzone)
 
   insert.insertAdjacentElement("afterbegin", uusiDiv)
@@ -163,13 +221,13 @@ function roskistenNimienVaihto(){
   }
 
   else if(peliIndex == 3){
-    for(var i=0; i<Object.keys(data.putkiasentaja).length; i++){
-      roskaLista.push(data.putkiasentaja[i].roska)
+    for(var i=0; i<Object.keys(data.rakennusala).length; i++){
+      roskaLista.push(data.rakennusala[i].roska)
       laatikoidenLuonti(i)
 
     
-      if(!roskaAstiaLista.includes(data.putkiasentaja[i].minne)){
-        roskaAstiaLista.push(data.putkiasentaja[i].minne)
+      if(!roskaAstiaLista.includes(data.rakennusala[i].minne)){
+        roskaAstiaLista.push(data.rakennusala[i].minne)
       }
     }
     for(var i=0; i<roskaAstiaLista.length; i++){
@@ -179,13 +237,13 @@ function roskistenNimienVaihto(){
   } 
 
   else if(peliIndex == 4){
-    for(var i=0; i<Object.keys(data.sahkoasentaja).length; i++){
-      roskaLista.push(data.sahkoasentaja[i].roska)
+    for(var i=0; i<Object.keys(data.artesaani).length; i++){
+      roskaLista.push(data.artesaani[i].roska)
       laatikoidenLuonti(i)
 
     
-      if(!roskaAstiaLista.includes(data.sahkoasentaja[i].minne)){
-        roskaAstiaLista.push(data.sahkoasentaja[i].minne)
+      if(!roskaAstiaLista.includes(data.artesaani[i].minne)){
+        roskaAstiaLista.push(data.artesaani[i].minne)
       }
     }
     for(var i=0; i<roskaAstiaLista.length; i++){
