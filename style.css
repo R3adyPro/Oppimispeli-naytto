@@ -27,15 +27,16 @@ html,body{
 }
 
 .yla{
-    height: 66%;
+    height: 37%;
 }
 
 .roskis{   
     display: inline-block;
     text-align: center;
+    font-size: 25px;
     min-width: 2vmin;
-    width: 11vmax;
-    height: 26vw;
+    width: 19.7vmax;
+    height: 17vw;
     object-fit: fill;
     background-color: #e9d190;
 }
@@ -70,7 +71,7 @@ h1{
 
 .modalSisalto {
     background-color: #4489d8;
-    margin: 15% auto;
+    margin: 6% auto;
     padding: 20px;
     border: 2px solid black;
     width: 30%;
@@ -85,8 +86,8 @@ h1{
     margin: 10px auto 30px;
     padding: 10px;
     min-width: 2vmin;
-    width: 9vmax;
-    height: 21vmax;
+    width: 18vmax;
+    height: 13vmax;
 }
 
 .drop-active {
@@ -94,15 +95,32 @@ h1{
   }
 
 .draggable {
-    width: 8.5%;
-    min-height: 2.5em;
+    width: 8%;
+    min-height: 1em;
     text-align: center;
     margin: 1rem 0 0 1rem;
-    padding: 5px;
-    background-color: red;
+    padding: 15px;
+    background-color: white;
+    border: 3px solid #4CAF50;
     border-radius: 0.75em;
     touch-action: none;
     overflow: hidden;
     user-select: none; 
-    transform: translate(0px, 0px);
+    position: fixed;
+    font-size: 20px;
+    transform: translate(852px, -930px)
+}
+#btnTarkistus{
+    font-family: monospace;
+    font-size: 24px;
+    background-color: #4CAF50;
+    margin-left: 8%;
+    padding: 20px 39px;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    top: 20px;
+    position: relative;
+    
 }

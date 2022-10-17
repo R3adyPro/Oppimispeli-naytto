@@ -2,8 +2,10 @@ import data from './roskat.json' assert {type: 'json'}
 import interact from 'https://cdn.skypack.dev/interactjs';
 
 var peliIndex 
-var pois
 var pisteet = 0
+var x = 450
+var y = -1200
+const poistoLista = []
 const roskaLista  = []
 const roskaAstiaLista = []
 const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11", "roskis12", "roskis13", "roskis14"]
@@ -46,24 +48,38 @@ interact(".dropzone").dropzone({
     for(var i=0; i<roskaLista.length; i++){
       if(peliIndex == 0){
         if(drag == data.yleiset[i].minne + i && drop == data.yleiset[i].minne && dropped == true){
-          pois = data.yleiset[i].minne + i
-
+          var pois = data.yleiset[i].minne + i
+          if(!poistoLista.includes(pois)){
+            poistoLista.push(pois)
+          }
         }
       }else if(peliIndex == 1){
         if(drag == data.autoala[i].minne + i && drop == data.autoala[i].minne && dropped == true){
-          pois = data.autoala[i].minne + i
+          var pois = data.autoala[i].minne + i
+          if(!poistoLista.includes(pois)){
+            poistoLista.push(pois)
+          }
         }
       }else if(peliIndex == 2){
         if(drag == data.maalari[i].minne + i && drop == data.maalari[i].minne && dropped == true){
-          pois = data.maalari[i].minne + i
+          var pois = data.maalari[i].minne + i
+          if(!poistoLista.includes(pois)){
+            poistoLista.push(pois)
+          }
         }
       }else if(peliIndex == 3){
         if(drag == data.rakennusala[i].minne + i && drop == data.rakennusala[i].minne && dropped == true){
-          pois = data.rakennusala[i].minne + i
+          var pois = data.rakennusala[i].minne + i
+          if(!poistoLista.includes(pois)){
+            poistoLista.push(pois)
+          }
         }
       }else if(peliIndex == 4){
         if(drag == data.artesaani[i].minne + i && drop == data.artesaani[i].minne && dropped == true){
-          pois = data.artesaani[i].minne + i
+          var pois = data.artesaani[i].minne + i
+          if(!poistoLista.includes(pois)){
+            poistoLista.push(pois)
+          }
         }
       }
     }
@@ -89,21 +105,21 @@ interact('.draggable').draggable({
   ],
   listeners: {
     move: dragMoveListener,
-
-    end (event){
-      try{
-      var element = document.getElementById(pois)
-      element.remove()
-      pisteet = pisteet + 1
-      document.getElementById("pisteet").innerHTML = pisteet
-      }catch{
-        console.log()
-      }
-    }
   }
 })
 
-
+btnTarkistus.onclick = function tarkista(){
+  while(true){
+    var element = document.getElementById(poistoLista[0])
+    element.remove()
+    poistoLista.splice(0, 1)
+    pisteet = pisteet + 1;
+    document.getElementById("pisteet").innerHTML = pisteet
+    if(poistoLista.length == 0){
+      break;
+    }
+  }
+}
 
 
 function laatikoidenLuonti(numero){
@@ -122,21 +138,8 @@ function laatikoidenLuonti(numero){
 
   
   uusiDiv.setAttribute("class", "draggable")
-
-  if(numero<9){
-    uusiDiv.setAttribute("style", "transform: translate(450px, -1200px)");
-    uusiDiv.setAttribute("data-x", "450");
-    uusiDiv.setAttribute("data-y", "-1200")
-  }else if(numero>9 && numero<20){
-    uusiDiv.setAttribute("style", "transform: translate(620px, -1860px)");
-    uusiDiv.setAttribute("data-x", "620");
-    uusiDiv.setAttribute("data-y", "-1835")
-  }else if(numero>19){
-    uusiDiv.setAttribute("style", "transform: translate(790px, -2520px)");
-    uusiDiv.setAttribute("data-x", "790");
-    uusiDiv.setAttribute("data-y", "-2520")
-  }
-
+  uusiDiv.setAttribute("data-x", "1020");
+  uusiDiv.setAttribute("data-y", "-1100");
   const content = document.createTextNode(roskaLista[numero])
   uusiDiv.appendChild(content)
   const nykyinen = document.getElementById(laatikot)
