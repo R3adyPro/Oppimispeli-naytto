@@ -5,6 +5,7 @@ var peliIndex
 var pisteet = 0
 var x = 450
 var y = -1200
+const roskienId = []
 const poistoLista = []
 const roskaLista  = []
 const roskaAstiaLista = []
@@ -103,6 +104,8 @@ interact('.draggable').draggable({
       endOnly: true
     })
   ],
+  autoScroll: true,
+
   listeners: {
     move: dragMoveListener,
   }
@@ -110,14 +113,23 @@ interact('.draggable').draggable({
 
 btnTarkistus.onclick = function tarkista(){
   while(true){
+    if(poistoLista.length == 0){
+      break;
+    }
+
+    for(var i=0; i<roskienId.length; i++){
+      try{
+        document.getElementById(roskienId[i]).style.borderColor = "red";
+      }catch (err){
+        continue
+      }
+
+    }
     var element = document.getElementById(poistoLista[0])
     element.remove()
     poistoLista.splice(0, 1)
     pisteet = pisteet + 1;
     document.getElementById("pisteet").innerHTML = pisteet
-    if(poistoLista.length == 0){
-      break;
-    }
   }
 }
 
@@ -126,20 +138,33 @@ function laatikoidenLuonti(numero){
   const uusiDiv = document.createElement("div");
   if(peliIndex == 0){
     uusiDiv.setAttribute("id", data.yleiset[numero].minne + numero)
+    roskienId.push(data.yleiset[numero].minne + numero)
   }else if(peliIndex == 1){
     uusiDiv.setAttribute("id", data.autoala[numero].minne + numero)
+    roskienId.push(data.autoala[numero].minne + numero)
   }else if(peliIndex == 2){
     uusiDiv.setAttribute("id", data.maalari[numero].minne + numero)
+    roskienId.push(data.maalari[numero].minne + numero)
   }else if(peliIndex == 3){
     uusiDiv.setAttribute("id", data.rakennusala[numero].minne + numero)
+    roskienId.push(data.rakennusala[numero].minne + numero)
   }else if(peliIndex == 4){
     uusiDiv.setAttribute("id", data.artesaani[numero].minne + numero)
+    roskienId.push(data.artesaani[numero].minne + numero)
   }
 
-  
   uusiDiv.setAttribute("class", "draggable")
-  uusiDiv.setAttribute("data-x", "1020");
-  uusiDiv.setAttribute("data-y", "-1100");
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent)){
+    uusiDiv.setAttribute("data-x", "450");
+    uusiDiv.setAttribute("data-y", "-690");
+  }else if(/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent)){
+    uusiDiv.setAttribute("data-x", "350");
+    uusiDiv.setAttribute("data-y", "-340");
+  }else {
+    uusiDiv.setAttribute("data-x", "843");
+    uusiDiv.setAttribute("data-y", "-770");
+  }
+
   const content = document.createTextNode(roskaLista[numero])
   uusiDiv.appendChild(content)
   const nykyinen = document.getElementById(laatikot)
