@@ -1,0 +1,158 @@
+html,body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.boxi{
+    float:left;
+    margin-left: 25%;
+    text-align: center;
+    width: 50%;
+    height: 90%;
+    border-style: solid;
+    border-radius: 16px;
+    border-width: 5px;
+    border-color: #4489d8;
+    background-color: #abc1da;
+}
+
+.pisteet{
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 6.2%;
+    float: right;
+    width: 12.5%;
+    background-color: #addaab8c;
+}
+
+.yla{
+    height: 37%;
+}
+
+.roskis{   
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    min-width: 2vmin;
+    width: 19.7vmax;
+    height: 22vw;
+    object-fit: fill;
+    background-color: #e9d190;
+}
+
+.roskaboxi{
+    text-align: center;
+    height: 34%;
+}
+
+.kor{
+    height: 100%;
+}
+
+h5{
+    text-align: center;
+}
+
+h1{
+    font-size: 25px;
+    font-family: monospace;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modalSisalto {
+    background-color: #4489d8;
+    margin: 6% auto;
+    padding: 20px;
+    border: 2px solid black;
+    width: 30%;
+    text-align: center;
+}
+
+
+.dropzone {
+    background-color: #ad9c6b;
+    border: dashed 2px transparent;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    min-width: 2vmin;
+    width: 17vmax;
+    height: 15.2vmax;
+}
+
+.drop-active {
+    border-color: #ffffff;
+  }
+
+.draggable {
+    width: 9%;
+    min-height: 1em;
+    text-align: center;
+    margin: 1rem 0 0 1rem;
+    padding: 10px;
+    background-color: white;
+    border: 3px solid #4CAF50;
+    border-radius: 0.75em;
+    touch-action: none;
+    overflow: hidden;
+    user-select: none; 
+    position: fixed;
+    font-size: 16px;
+    transform: translate(450px, -690px)
+}
+#btnTarkistus{
+    font-family: monospace;
+    font-size: 20px;
+    background-color: #4CAF50;
+    margin-left: 5.7%;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    top: 20px;
+    position: relative;
+    
+}
+#pisteet{
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#pelaa{
+    font-family: monospace;
+    font-size: 17px;
+    background-color: #4CAF50;
+    margin-left: 0%;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    top: 5px;
+    position: relative;
+    
+}
+
+#peliMuodot {
+    appearance: none;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 0;
+    width: 50%;
+    font-family: monospace;
+    font-size: 20px;
+    cursor: pointer;
+    height: 30px;
+    text-align: center;
+}
