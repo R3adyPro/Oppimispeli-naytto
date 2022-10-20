@@ -19,7 +19,9 @@ pelaa.onclick = function peliMuodonValinta() {
   roskistenNimienVaihto()
 }
 
-
+uudestaan.onclick = function uudestaan(){
+  window.location.reload()
+}
 
 function dragMoveListener (event) {
   var target = event.target
@@ -131,7 +133,12 @@ btnTarkistus.onclick = function tarkista(){
     pisteet = pisteet + 1;
     document.getElementById("pisteet").innerHTML = pisteet
   }
+  console.log(pisteet, roskaLista.length)
+  if(pisteet == roskaLista.length){
+    modal1.style.display = "block"
+  }
 }
+
 
 
 function laatikoidenLuonti(numero){
@@ -192,6 +199,7 @@ function roskistenLuonti(numero){
 //modal
 
 var modal = document.getElementById("peliModal");
+var modal1 = document.getElementById("lopetinModal")
 
 var span = document.getElementsByClassName("close")[0];
 
