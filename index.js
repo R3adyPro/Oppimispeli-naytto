@@ -2,12 +2,14 @@ import data from './roskat.json' assert {type: 'json'}
 import interact from 'https://cdn.skypack.dev/interactjs';
 
 var peliIndex 
+var ala;
 var pisteet = 0
 var x = 450
 var y = -1200
 const roskienId = []
 const poistoLista = []
 const roskaLista  = []
+const poistetut = [];
 const roskaAstiaLista = []
 const roskislista = ["roskis1", "roskis2", "roskis3", "roskis4", "roskis5", "roskis6", "roskis7", "roskis8", "roskis9", "roski10", "roskis11", "roskis12", "roskis13", "roskis14"]
 
@@ -129,14 +131,57 @@ btnTarkistus.onclick = function tarkista(){
     }
     var element = document.getElementById(poistoLista[0])
     element.remove()
+    poistetut.push(poistoLista[0]);
+    console.log(poistetut);
     poistoLista.splice(0, 1)
     pisteet = pisteet + 1;
     document.getElementById("pisteet").innerHTML = pisteet
   }
   console.log(pisteet, roskaLista.length)
+  
   if(pisteet == roskaLista.length){
     modal1.style.display = "block"
   }
+  minneVaarat();
+}
+
+//tekee listan kaikkista mitkä meni väärin ja antaa oikeat vastaukset
+function minneVaarat(){
+    var vaaraLista = "";
+    for (let i = 0; i < roskienId.length; i++) {
+        var roska = ala[i].roska;
+        var minne = ala[i].minne;
+        var onkoPoistettu = false;
+
+        for (let i = 0; i < poistetut.length; i++) {
+            if(roska == poistetut[i]){
+                onkoPoistettu = true;
+            }
+        }
+        
+        if(!onkoPoistettu){
+            var line = " " + roska + " -> " + minne;
+
+            vaaraLista = vaaraLista + line + "<br>";
+        }
+        
+        
+    }
+    document.getElementById("vaaratP").innerHTML = vaaraLista;
+    naytaVaarat();
+
+}
+
+document.getElementById("vaaratModal").addEventListener("click", function (event) {
+    document.getElementById("vaaratModal").className = "modal1";
+
+})
+
+function naytaVaarat(){
+    var div = document.getElementById("vaaratModal");
+
+    div.className = "modal";
+
 }
 
 
@@ -209,6 +254,7 @@ var span = document.getElementsByClassName("close")[0];
 //Roskisten nimien vaihto
 function roskistenNimienVaihto(){
   if(peliIndex == 0){
+      ala = data.yleiset;
     for(var i=0; i<Object.keys(data.yleiset).length; i++){
       roskaLista.push(data.yleiset[i].roska)
       laatikoidenLuonti(i)
@@ -225,6 +271,7 @@ function roskistenNimienVaihto(){
   }
 
   else if(peliIndex == 1){
+    ala = data.autoala;
     for(var i=0; i<Object.keys(data.autoala).length; i++){
       roskaLista.push(data.autoala[i].roska)
       laatikoidenLuonti(i)
@@ -241,6 +288,7 @@ function roskistenNimienVaihto(){
   }
   
   else if(peliIndex == 2){
+    ala = data.maalari;
     for(var i=0; i<Object.keys(data.maalari).length; i++){
       roskaLista.push(data.maalari[i].roska)
       laatikoidenLuonti(i)
@@ -257,6 +305,7 @@ function roskistenNimienVaihto(){
   }
 
   else if(peliIndex == 3){
+    ala = data.rakennusala;
     for(var i=0; i<Object.keys(data.rakennusala).length; i++){
       roskaLista.push(data.rakennusala[i].roska)
       laatikoidenLuonti(i)
@@ -273,6 +322,7 @@ function roskistenNimienVaihto(){
   } 
 
   else if(peliIndex == 4){
+    ala = data.artesaani;
     for(var i=0; i<Object.keys(data.artesaani).length; i++){
       roskaLista.push(data.artesaani[i].roska)
       laatikoidenLuonti(i)

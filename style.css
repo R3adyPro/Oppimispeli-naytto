@@ -4,6 +4,11 @@ html,body{
     margin: 0;
 }
 
+.text{    
+    font-size: 20px;
+    color: white;
+}
+
 .boxi{
     float:left;
     margin-left: 25%;
