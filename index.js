@@ -131,8 +131,7 @@ btnTarkistus.onclick = function tarkista(){
     }
     var element = document.getElementById(poistoLista[0])
     element.remove()
-    poistetut.push(poistoLista[0]);
-    console.log(poistetut);
+    poistetut.push(element.innerHTML);
     poistoLista.splice(0, 1)
     pisteet = pisteet + 1;
     document.getElementById("pisteet").innerHTML = pisteet
